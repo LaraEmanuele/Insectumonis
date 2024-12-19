@@ -39,19 +39,19 @@ class UsuarioController{
         }
 
         // Recebe a lista de usuários do site
-        //const usuarios = this.read();
-        const  usuarioAll =  await usuario.find();
+        //const usuarios =  JSON.parse(this.read());
+        const  usuarios =  await usuario.find();
 
         // Busca o usuário no "banco de dados"
-        var usuario = usuarios.find(user => user.email === email);
+        const usuarioEncontrado = usuarios.find(user => user.email === email);
 
         // Verifica se o usuário existe
-        if (!usuario) {
+        if (!usuarioEncontrado) {
             return response.status(404).json({ error: 'Usuário não encontrado.' });
         }
 
         // Verifica se a senha está correta
-        if (usuario.password !== password) {
+        if (usuarioEncontrado.password !== password) {
             return response.status(401).json({ error: 'Senha incorreta.' });
         }
 
@@ -59,8 +59,9 @@ class UsuarioController{
         const token = 'token_exemplo_12345'; // Simulação de geração de token
         return response.status(200).json({
             message: 'Login realizado com sucesso.',
-            data: { nome: usuario.nome, token }
+            data: { nome: usuarioEncontrado.nome, token }
         });
+
     }
 
 }
