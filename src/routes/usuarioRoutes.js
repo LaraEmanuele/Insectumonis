@@ -3,8 +3,12 @@ const routes = express.Router();
 
 const UsuarioController = require ('../controllers/UsuarioController');
 
-routes.post('/usuario', UsuarioController.create);
+const uc = new UsuarioController;
 
-routes.get('/usuario', UsuarioController.read);
+routes.post('/login', uc.create);
+
+routes.get('/login', uc.read);
+
+routes.post('/login/usuario', uc.validacaoLogin);
 
 module.exports = routes;
