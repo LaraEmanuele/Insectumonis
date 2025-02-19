@@ -5,10 +5,19 @@ const UsuarioController = require ('../controllers/UsuarioController');
 
 const uc = new UsuarioController;
 
-routes.post('/login', uc.create);
+// Rota para buscar todos os usuários
+routes.get("/usuarios", uc.read);
 
-routes.get('/login', uc.read);
+// Rota para buscar um usuário específico por ID
+routes.get("/usuario/:id", uc.readById);
 
-routes.post('/login/usuario', uc.validacaoLogin);
+// Rota para cadastrar um novo usuário (Aluno ou Professor)
+routes.post("/usuario/cadastro", uc.create);
+
+// Rota para autenticação de login
+routes.post("/usuario/login", uc.validacaoLogin);
+
+// Rota para atualizar um usuário
+routes.put("/usuario/:id", uc.update);
 
 module.exports = routes;
