@@ -4,7 +4,7 @@ const galloDataSchema = new mongoose.Schema({
     superclasse: String,
     classe: String,
     ordem: String,
-    superOrdem: String,
+    subOrdem: String,
     superFamilia: String,
     familia: String,
     subFamilia: String,

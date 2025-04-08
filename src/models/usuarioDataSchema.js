@@ -6,7 +6,8 @@ const usuarioDataSchema = new mongoose.Schema ({
     primeiroNome: String,
     sobrenome: String,
     campus: Number,
-    areaAtuacao: Number
+    areaAtuacao: Number,
+    telefone: Number
 });
 
 module.exports = mongoose.model('usuario', usuarioDataSchema);

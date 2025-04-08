@@ -6,6 +6,10 @@ const routesSibbr = require('./routes/sibbrRoutes');
 const bodyParser = require('body-parser');
 require('./config/dbConfig');
 
+const cors = require('cors');
+app.use(cors());
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
