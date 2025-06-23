@@ -4,7 +4,7 @@ const Gallo = require("../models/galloDataSchema");
 class GalloController {
     /**
      * Retorna todos os registros da coleção Gallo.
-     */
+    */
     async read(request, response) {
         try {
             const galloAll = await Gallo.find();
@@ -16,7 +16,7 @@ class GalloController {
 
     /**
      * Retorna um único registro por ID.
-     */
+    */
     async readById(request, response) {
         try {
             const { id } = request.params;
@@ -33,8 +33,53 @@ class GalloController {
     }
 
     /**
+     * Retorna um único registro por ID.
+    */
+    async readById(request, response) {
+        try {
+            const { id } = request.params;
+            const gallo = await Gallo.findById(id);
+
+            if (!gallo) {
+                return response.status(404).json({ error: "Registro não encontrado." });
+            }
+
+            return response.status(200).json(gallo);
+        } catch (error) {
+            return response.status(500).json({ error: "Erro ao buscar o registro", details: error.message });
+        }
+    }
+
+    /**
+     * Retorna um único registro por nome.
+    */
+    async readByName(request, response) {
+        try {
+            const nomeProcurado = request.query.nome; // Obtém o nome da query string
+
+            if (!nomeProcurado) {
+                return response.status(400).json({ message: "O parâmetro 'nome' é obrigatório na query string." });
+            }
+
+            // Filtra os elementos onde o nome é igual ao nome procurado (case-insensitive para melhor usabilidade)
+            const elementosFiltrados = elementos.filter(elemento =>
+                elemento.nome.toLowerCase() === nomeProcurado.toLowerCase()
+            );
+
+            // 5. Enviar a resposta
+            if (elementosFiltrados.length > 0) {
+                response.status(200).json(elementosFiltrados);
+            } else {
+                response.status(404).json({ message: `Nenhum elemento encontrado com o nome '${nomeProcurado}'.` });
+            }
+        } catch (error) {
+            return response.status(500).json({ error: "Erro ao buscar o registro", details: error.message });
+        }
+    }
+
+    /**
      * Cria um novo registro de inseto no banco de dados.
-     */
+    **/
     async create(request, response) {
         try {
             console.log(request.body);

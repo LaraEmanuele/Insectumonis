@@ -4,7 +4,7 @@ const routesGallo = require('./routes/galloRoutes');
 const routesUsuario = require('./routes/usuarioRoutes');
 const routesSibbr = require('./routes/sibbrRoutes');
 const bodyParser = require('body-parser');
-require('./config/dbConfig');
+require('../config/dbConfig');
 
 const cors = require('cors');
 app.use(cors());

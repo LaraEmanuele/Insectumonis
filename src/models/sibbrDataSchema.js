@@ -20,7 +20,8 @@ const sibbrDataSchema = new mongoose.Schema ({
     inicioColeta: { type: Date, required: false },
     fimColeta: { type: Date, required: false },
     localizacao: { type: String, required: false },
-    subcolecoes: { type: Number, required: false }
+    subcolecoes: { type: Number, required: false },
+    colecaoImagem: { type: String, required: false }// Armeza a imagem da coleção
 });
 
 module.exports = mongoose.model('sibbr', sibbrDataSchema);

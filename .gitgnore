@@ -1,0 +1,19 @@
+# Arquivos de log
+*.log
+
+# Pastas de dependências (Node.js)
+node_modules/
+
+# Variáveis de ambiente
+.env
+
+# Arquivos de sistema operacional
+.DS_Store    # macOS
+Thumbs.db    # Windows
+
+# Pastas de build/dist
+build/
+dist/
+
+# Arquivos de cache
+.vscode/     # Pasta de configurações do VS Code

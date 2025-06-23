@@ -15,7 +15,10 @@ routes.get("/usuario/:id", uc.readById);
 routes.post("/usuario/cadastro", uc.create);
 
 // Rota para autenticação de login
-routes.post("/usuario/login", uc.validacaoLogin);
+routes.get("/usuario/confirmar-email/:token", uc.verifyEmail);
+
+// Rota para autenticação de login
+routes.post("/usuario/login", uc.validationLogin);
 
 // Rota para atualizar um usuário
 routes.put("/usuario/:id", uc.update);
